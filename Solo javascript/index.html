@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        
+        <h1>NUMEROS PRIMOS</h1>
+        <ul>
+            <li>
+                <p>Escriba el numero que desee verificar si es primo o no</p>
+                <input id="inputPrimo">
+                <button  onclick="verificarPrimo()">Verificar</button>
+                <p id="p1"></p>
+            </li>
+            <li>
+                <p>Escriba cuantos numeros primos desea mostrar</p>
+                <input id="inputPrimo2">
+                <button  onclick="primerosPrimos()">mostrar</button>
+                <p id="p2"></p>
+            </li>
+        </ul>
+        <script>
+           
+            //var numero =prompt("Escriba cuantos numeros primos quiere imprimir");
+           function verificarPrimo(){
+            var numero =document.getElementById("inputPrimo").value;
+           console.log(numero);
+                var i=2;
+                var aux;
+                var bandera=true;
+                if(numero==2){
+                    document.getElementById("p1").innerHTML="el numero  es primo";
+                }
+                for(i;i<numero;i++){
+                    aux= numero%i;
+                    if(aux==0){
+                        document.getElementById("p1").innerHTML="el numero no es primo";
+                        bandera=false;
+                        break;
+                    }                  
+                    
+                }
+                if(bandera==true){
+                    document.getElementById("p1").innerHTML="el numero es primo";  
+                    //document.write("solo una vez");
+                }
+
+            }
+       
+           function primerosPrimos(){
+                var primos=[];
+                var numeros=2;
+                var modular;
+                var numero=document.getElementById("inputPrimo2").value;
+                var maximo=541;
+                var bandera = true;
+                console.log("el maximo es "+ maximo);
+                for(numeros;numeros<=maximo;numeros++){
+                    for (var contador=2; contador<numeros;contador++){
+                        modular=numeros%contador;
+                       // console.log("el numero "+numeros+" tiene modulo "+modular +" con contador "+contador)
+                        if(modular==0){
+                            numeros++;
+                            contador=2;
+                            bandera=false;
+                            console.log("el numero "+numeros+" no es primo")
+                        }
+                        bandera=true;
+                    }
+                    if(bandera==true){
+                        primos.push(numeros);
+                    
+                    }
+                }
+                
+                        document.getElementById("p2").innerHTML=primos.slice(0,numero);
+                        console.log(primos.length);
+            }
+            
+
+        </script>
+        <!--<button type="button" onclick="myFunction()">Click Me!</button>!-->
+    </body>
+</html>
