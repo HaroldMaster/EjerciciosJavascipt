@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+    </head>
+    <body>
+        
+        <h1>NUMEROS PRIMOS</h1>
+        <ul>
+            <li>
+                <p>Escriba el numero que desee verificar si es primo o no</p>
+                <input id="inputPrimo">
+                <button  onclick="verificarPrimo()">Verificar</button>
+                <p id="p1"></p>
+            </li>
+            <li>
+                <p>Escriba cuantos numeros primos desea mostrar</p>
+                <input id="inputPrimo2">
+                <button  onclick="primerosPrimos()">mostrar</button>
+                <p id="p2"></p>
+            </li>
+            <li>
+                    <p>Escriba cuantos numeros de la serie de fibonacci quiere desplegar(sin recursividad)</p>
+                    <input id="inputPrimo3">
+                    <button  onclick="fibonacci()">mostrar</button>
+                    <p id="p3"></p>
+            </li>
+            <li>
+                    <p>Escriba cuantos numeros de la serie de fibonacci quiere desplegar(con recursividad)</p>
+                    <input id="inputPrimo4">
+                    <button  onclick="fibonacciRecursivo()">mostrar</button>
+                    <p id="p4"></p>
+            </li>
+            <li>
+                    <p>Escriba el numero que desee calcular el factorial</p>
+                    <input id="inputPrimo5">
+                    <button  onclick="desplegarFacto()">mostrar</button>
+                    <p id="p5"></p>
+            </li>
+        </ul>
+        <script>
+           
+            //var numero =prompt("Escriba cuantos numeros primos quiere imprimir");
+           function verificarPrimo(){
+                var numero =document.getElementById("inputPrimo").value;
+                console.log(numero);
+                var i=2;
+                var aux;
+                var bandera=true;
+                if(numero==2){
+                    document.getElementById("p1").innerHTML="el numero  es primo";
+                }
+                for(i;i<numero;i++){
+                    aux= numero%i;
+                    if(aux==0){
+                        document.getElementById("p1").innerHTML="el numero no es primo";
+                        bandera=false;
+                        break;
+                    }                  
+                    
+                }
+                if(bandera==true){
+                    document.getElementById("p1").innerHTML="el numero es primo";  
+                    //document.write("solo una vez");
+                }
+
+            }
+       
+           function primerosPrimos(){
+                var primos=[2];
+                var numeros=2;
+                var modular;
+                var numero=document.getElementById("inputPrimo2").value;
+                var maximo=541;
+                var bandera = false;
+                console.log("el maximo es "+ maximo);
+                for(numeros;numeros<=maximo;numeros++){
+                    for (var contador=2; contador<numeros;contador++){
+                        modular=numeros%contador;
+                       // console.log("el numero "+numeros+" tiene modulo "+modular +" con contador "+contador)
+                        if(modular==0){
+                            console.log("el numero "+numeros+" no es primo")
+                            numeros++;
+                            contador=2;
+                            //bandera=false;
+                           
+                        } else{
+                        bandera=true;}
+                    }
+                    if(bandera==true){
+                        primos.push(numeros);
+                    
+                    }
+                }
+                
+                        document.getElementById("p2").innerHTML=primos.slice(0,numero);
+                        console.log(primos.length);
+            }
+            
+            function fibonacci (){
+                var numero=document.getElementById("inputPrimo3").value;
+                let contador =1;
+                var inicial = 1;
+                var segundo = 2;
+                var vector =[1,2];
+                while(contador<=numero-2){
+                    var suma = inicial + segundo;
+                    vector.push(suma);
+                    document.getElementById("p3").innerHTML= vector;
+                    inicial = segundo;
+                    segundo = suma;
+                    contador++;
+                }
+            }
+            var numeroInicial=1;
+            var numeroSegundo=2;
+            var suma = 0;
+            var total=[0,1,2];
+            function fibonacciRecursivo(a,b){
+                var numero=document.getElementById("inputPrimo4").value;
+                suma = numeroInicial + numeroSegundo;
+                total.push(suma);
+                numeroInicial=numeroSegundo;
+                numeroSegundo=suma;
+                document.getElementById("p4").innerHTML= total;
+                if(total.length==numero){
+                    return 0;
+                }
+                return fibonacciRecursivo(numeroSegundo,suma);
+            }
+            
+            
+            function factorial(n){
+                if(n==1){
+                     return 1;
+                } 
+                else{
+                return n * factorial(n-1);}
+            }
+            function desplegarFacto(){
+                var numero=document.getElementById("inputPrimo5").value;
+                document.getElementById("p5").innerHTML=factorial(numero);
+            }
+           
+        </script>
+        <!--<button type="button" onclick="myFunction()">Click Me!</button>!-->
+    </body>
+</html>
