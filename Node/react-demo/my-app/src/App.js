@@ -14,7 +14,7 @@ render() {
     return (
     <div>No hay personajes
       <p></p> <button onClick={this.cambiarEstado}>cambiar Estado</button>
-  {/*     <button onClick={()=> this.setState({show:true})}>Cambiar estado</button> */}
+  {/*     <button onClick={()=> this.setState({show:true})}>Cambiar estado</button> Esta linea se hizo sin el metodo cambiar estado*/}
     </div>);
   } 
   else{
