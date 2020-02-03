@@ -1,0 +1,11 @@
+#personajes_caja{
+  color: red;
+  background-color: black;
+  font-family: cursive;
+}
+#personajes_poder{
+  color: blue;
+}
+div {
+  border: 1px solid red;
+}
